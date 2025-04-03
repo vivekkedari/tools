@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Tags Generator | Boost Your Video SEO</title>
+    <meta name="description" content="Generate optimized tags for YouTube videos to improve visibility and ranking. Perfect for content creators and marketers.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF0000;
+            --primary-dark: #CC0000;
+            --secondary: #1A1A1A;
+            --accent: #4285F4;
+            --light: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --medium-gray: #E9ECEF;
+            --dark-gray: #6C757D;
+            --success: #28A745;
+            --warning: #FFC107;
+            --danger: #DC3545;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--secondary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255,0,0,0.05) 0%, rgba(255,255,255,1) 100%);
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary-dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        /* Tool Container */
+        .tool-container {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .tool-container:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light-gray);
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
+            background-color: var(--light);
+        }
+
+        textarea.input-field {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Results Section */
+        .result-container {
+            margin-top: 40px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-box {
+            background-color: var(--light-gray);
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .result-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .tag-count {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        .tag-count.warning {
+            color: var(--warning);
+        }
+
+        .tag-count.error {
+            color: var(--danger);
+        }
+
+        .copy-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn:hover {
+            background-color: #3367d6;
+        }
+
+        .copy-btn.success {
+            background-color: var(--success);
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .tips-section h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .tips-list {
+            list-style-position: inside;
+        }
+
+        .tips-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Ad Container */
+        .ad-container {
+            width: 300px;
+            background-color: var(--light);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .ad-container p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 60px 0 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--light);
+            padding-left: 5px;
+        }
+
+        .footer-section ul li a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .ad-container {
+                width: 100%;
+                order: -1;
+                min-height: auto;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tool-container, .feature-card {
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+            }
+            
+            .hero {
+                padding: 40px 0 30px;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #E0E0E0;
+        }
+
+        body.dark-mode .tool-container,
+        body.dark-mode .feature-card,
+        body.dark-mode .ad-container,
+        body.dark-mode header {
+            background-color: #1E1E1E;
+            color: #E0E0E0;
+        }
+
+        body.dark-mode .input-field,
+        body.dark-mode .result-box,
+        body.dark-mode .tips-section {
+            background-color: #2D2D2D;
+            border-color: #3D3D3D;
+            color: #E0E0E0;
+        }
+
+        body.dark-mode label,
+        body.dark-mode .section-title,
+        body.dark-mode .feature-card h3 {
+            color: #F0F0F0;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background-color: var(--light);
+            color: var(--secondary);
+        }
+
+        body.dark-mode footer {
+            background-color: #0A0A0A;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube Tools</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Boost Your YouTube <span class="highlight">Video SEO</span></h1>
+            <p>Generate high-performing tags to improve your video's visibility and reach more viewers with our powerful YouTube Tags Generator.</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="tool-container">
+                <h2 class="section-title">Generate Your Tags</h2>
+                <form id="tagsForm">
+                    <div class="form-group">
+                        <label for="videoTitle">Video Title*</label>
+                        <input type="text" id="videoTitle" class="input-field" placeholder="How to Make Perfect Pancakes" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="videoDescription">Video Description</label>
+                        <textarea id="videoDescription" class="input-field" placeholder="Enter your video description to generate more relevant tags..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="videoCategory">Video Category*</label>
+                        <select id="videoCategory" class="input-field" required>
+                            <option value="">Select a category</option>
+                            <option value="howto">Howto & Style</option>
+                            <option value="food">Food</option>
+                            <option value="education">Education</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="music">Music</option>
+                            <option value="tech">Science & Technology</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customKeywords">Custom Keywords (Optional)</label>
+                        <input type="text" id="customKeywords" class="input-field" placeholder="breakfast, recipe, cooking tutorial">
+                        <small class="text-muted">Separate keywords with commas</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-block">
+                        <i class="fas fa-magic"></i> Generate Tags
+                    </button>
+                </form>
+                
+                <div class="result-container" id="resultContainer">
+                    <h2 class="section-title">Your Generated Tags</h2>
+                    <div class="result-box">
+                        <textarea id="generatedTags" class="input-field" readonly></textarea>
+                        <div class="result-actions">
+                            <span class="tag-count" id="tagCount">0 tags generated (500 character limit)</span>
+                            <button class="copy-btn" id="copyBtn">
+                                <i class="far fa-copy"></i> Copy Tags
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tips-section">
+                        <h3><i class="fas fa-lightbulb"></i> Pro Tips for Using Tags</h3>
+                        <ul class="tips-list">
+                            <li>Use all 500 characters to maximize discoverability</li>
+                            <li>Place your most important tags first</li>
+                            <li>Mix broad and specific keywords</li>
+                            <li>Include your brand name as a tag</li>
+                            <li>Update tags periodically for older videos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ad-container">
+                <!-- AdSense Placeholder -->
+                <div style="width: 100%; text-align: center;">
+                    <p>Advertisement</p>
+                    <div style="background: #f0f0f0; padding: 20px; border-radius: 8px;">
+                        <p>Your AdSense Ad Here</p>
+                        <small>300x250 Ad Unit</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h3>Smart Tag Generation</h3>
+                <p>Our AI analyzes your content and current trends to suggest the most effective tags for maximum reach.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>SEO Optimized</h3>
+                <p>Tags are optimized for YouTube's algorithm to help your videos rank higher in search results.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Generate professional-quality tags in seconds, saving you hours of research and brainstorming.</p>
+            </div>
+        </div>
+        
+        <div class="ad-container" style="width: 100%; margin: 40px 0; min-height: 90px;">
+            <!-- AdSense Placeholder -->
+            <div style="width: 100%; text-align: center;">
+                <p>Advertisement</p>
+                <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
+                    <p>Your AdSense Ad Here</p>
+                    <small>Responsive Ad Unit</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Providing powerful, free tools to help content creators grow their channels and reach more viewers.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tags Generator</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Thumbnail Maker</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Title Generator</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> YouTube SEO Guide</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Content Strategy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Video Marketing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Creator Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form Elements
+            const form = document.getElementById('tagsForm');
+            const resultContainer = document.getElementById('resultContainer');
+            const generatedTags = document.getElementById('generatedTags');
+            const copyBtn = document.getElementById('copyBtn');
+            const tagCount = document.getElementById('tagCount');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            
+            // Dark Mode Toggle
+            darkModeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const icon = darkModeToggle.querySelector('i');
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+            
+            // Form Submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('videoTitle').value.trim();
+                const description = document.getElementById('videoDescription').value.trim();
+                const category = document.getElementById('videoCategory').value;
+                const customKeywords = document.getElementById('customKeywords').value.trim();
+                
+                if (!title || !category) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                // Generate tags
+                const tags = generateTags(title, description, category, customKeywords);
+                
+                // Display results
+                generatedTags.value = tags;
+                updateTagCount();
+                resultContainer.style.display = 'block';
+                
+                // Scroll to results
+                resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            
+            // Copy Button
+            copyBtn.addEventListener('click', function() {
+                generatedTags.select();
+                document.execCommand('copy');
+                
+                // Visual feedback
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyBtn.classList.add('success');
+                
+                setTimeout(function() {
+                    copyBtn.innerHTML = '<i class="far fa-copy"></i> Copy Tags';
+                    copyBtn.classList.remove('success');
+                }, 2000);
+            });
+            
+            // Tag Count Update
+            generatedTags.addEventListener('input', updateTagCount);
+            
+            function updateTagCount() {
+                const tags = generatedTags.value;
+                const charCount = tags.length;
+                const tagCountNum = tags ? tags.split(',').length : 0;
+                
+                // Update count display
+                tagCount.textContent = `${tagCountNum} tags generated (${charCount}/500 characters used)`;
+                
+                // Update color based on character count
+                tagCount.className = 'tag-count';
+                if (charCount > 500) {
+                    tagCount.classList.add('error');
+                } else if (charCount > 400) {
+                    tagCount.classList.add('warning');
+                }
+            }
+            
+            // Tag Generation Algorithm
+            function generateTags(title, description, category, customKeywords) {
+                // 1. Extract keywords from title
+                const titleKeywords = extractKeywords(title);
+                
+                // 2. Extract from description if provided
+                let descKeywords = [];
+                if (description) {
+                    descKeywords = extractKeywords(description);
+                }
+                
+                // 3. Process custom keywords if provided
+                let customTags = [];
+                if (customKeywords) {
+                    customTags = customKeywords.split(',').map(k => k.trim()).filter(k => k);
+                }
+                
+                // 4. Add category-specific tags
+                const categoryTags = getCategoryTags(category);
+                
+                // 5. Combine all tags and remove duplicates
+                let allTags = [...new Set([
+                    ...titleKeywords,
+                    ...descKeywords,
+                    ...customTags,
+                    ...categoryTags
+                ])];
+                
+                // 6. Remove empty tags
+                allTags = allTags.filter(tag => tag && tag.length > 0);
+                
+                // 7. Limit to 500 characters (YouTube's limit for tags)
+                let result = '';
+                let charCount = 0;
+                
+                for (const tag of allTags) {
+                    if (charCount + tag.length + (result ? 1 : 0) <= 500) {
+                        if (result) result += ',';
+                        result += tag;
+                        charCount += tag.length + (result ? 1 : 0);
+                    } else {
+                        break;
+                    }
+                }
+                
+                return result;
+            }
+            
+            // Keyword extraction from text
+            function extractKeywords(text) {
+                // Remove special characters and split into words
+                const words = text.toLowerCase()
+                    .replace(/[^\w\s]|_/g, '')
+                    .replace(/\s+/g, ' ')
+                    .split(' ');
+                
+                // Common words to exclude
+                const stopWords = new Set([
+                    'a', 'an', 'the', 'and', 'or', 'but', 'if', 'then', 'else', 'when',
+                    'at', 'by', 'for', 'from', 'in', 'into', 'of', 'on', 'to', 'with',
+                    'how', 'what', 'when', 'where', 'who', 'why', 'is', 'are', 'was',
+                    'were', 'be', 'been', 'being', 'have', 'has', 'had', 'do', 'does',
+                    'did', 'can', 'could', 'shall', 'should', 'will', 'would', 'may',
+                    'might', 'must', 'i', 'you', 'he', 'she', 'it', 'we', 'they',
+                    'my', 'your', 'his', 'her', 'its', 'our', 'their', 'this', 'that',
+                    'these', 'those'
+                ]);
+                
+                // Filter out stop words and short words
+                const keywords = words.filter(word => 
+                    word.length > 2 && !stopWords.has(word)
+                );
+                
+                // Create variations (single words, 2-word phrases)
+                const variations = [];
+                
+                // Add single words
+                variations.push(...keywords);
+                
+                // Add 2-word phrases
+                for (let i = 0; i < keywords.length - 1; i++) {
+                    variations.push(`${keywords[i]} ${keywords[i+1]}`);
+                }
+                
+                return variations;
+            }
+            
+            // Category-specific tags
+            function getCategoryTags(category) {
+                const categoryTags = {
+                    'howto': ['how to', 'tutorial', 'diy', 'guide', 'step by step', 'tips', 'tricks', 'learn'],
+                    'food': ['recipe', 'cooking', 'food', 'meal', 'delicious', 'easy recipe', 'homemade', 'kitchen'],
+                    'education': ['learn', 'education', 'teaching', 'lesson', 'course', 'study', 'knowledge', 'school'],
+                    'entertainment': ['funny', 'comedy', 'entertainment', 'show', 'celebrity', 'hollywood', 'tv', 'movie'],
+                    'gaming': ['game', 'gaming', 'playthrough', 'walkthrough', 'review', 'esports', 'stream', 'gamer'],
+                    'music': ['music', 'song', 'artist', 'band', 'album', 'live', 'performance', 'sing', 'musician'],
+                    'tech': ['technology', 'tech', 'gadget', 'review', 'tutorial', 'science', 'computer', 'phone']
+                };
+                
+                return categoryTags[category] || [];
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        nav.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
