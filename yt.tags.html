@@ -1,823 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ========== EDIT THESE VALUES ========== -->
-    <meta name="author" content="vivek balasaheb kedari">  <!-- Your name here -->
-    <meta name="adsbygoogle" content="ca-pub-XXXXXXXXXXXXXXXX"> <!-- Your AdMob ID -->
-    <!-- ======================================= -->
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Tags Generator | Boost Video SEO</title>
-    <meta name="description" content="Generate optimized YouTube tags to increase views and engagement">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #FF0000;
-            --primary-light: rgba(255, 0, 0, 0.1);
-            --secondary: #1A1A1A;
-            --light: #FFFFFF;
-            --light-gray: #F8F9FA;
-            --medium-gray: #E9ECEF;
-            --dark-gray: #6C757D;
-            --success: #28A745;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-gray);
-            color: var(--secondary);
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--light);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            font-size: 1.8rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(255,255,255,1) 100%);
-            padding: 60px 0 40px;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--dark-gray);
-            margin-bottom: 30px;
-        }
-
-        .highlight {
-            background-color: var(--primary-light);
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        /* Main Tool Container */
-        .tool-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .tool-container {
-            flex: 1;
-            min-width: 300px;
-            background-color: var(--light);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            padding: 30px;
-            transition: var(--transition);
-        }
-
-        .tool-container:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--secondary);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--secondary);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--medium-gray);
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            transition: var(--transition);
-            background-color: var(--light-gray);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px var(--primary-light);
-            background-color: var(--light);
-        }
-
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px 24px;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-block {
-            display: flex;
-            width: 100%;
-        }
-
-        /* Results Section */
-        .result-container {
-            margin-top: 40px;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .result-box {
-            background-color: var(--light-gray);
-            border: 1px solid var(--medium-gray);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .result-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .tag-count {
-            font-size: 0.9rem;
-            color: var(--dark-gray);
-        }
-
-        .tag-count.warning {
-            color: var(--warning);
-        }
-
-        .tag-count.error {
-            color: var(--danger);
-        }
-
-        .copy-btn {
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .copy-btn:hover {
-            background-color: #333;
-        }
-
-        .copy-btn.success {
-            background-color: var(--success);
-        }
-
-        /* Tips Section */
-        .tips-card {
-            background-color: var(--light-gray);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            margin-top: 30px;
-        }
-
-        .tips-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .tips-list {
-            list-style-position: inside;
-        }
-
-        .tips-list li {
-            margin-bottom: 8px;
-            padding-left: 5px;
-        }
-
-        /* Ad Container */
-        .ad-container {
-            width: 300px;
-            background-color: var(--light);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 250px;
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-        }
-
-        .ad-label {
-            position: absolute;
-            color: var(--dark-gray);
-            font-size: 0.8rem;
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
-        }
-
-        .feature-card {
-            background-color: var(--light);
-            border-radius: var(--radius-md);
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--secondary);
-            color: var(--light);
-            padding: 60px 0 0;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            color: var(--light);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #CCCCCC;
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a:hover {
-            color: var(--light);
-            padding-left: 5px;
-        }
-
-        .footer-links i {
-            width: 20px;
-            text-align: center;
-        }
-
-        .copyright {
-            text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #AAAAAA;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .tool-wrapper {
-                flex-direction: column;
-            }
-            
-            .ad-container {
-                width: 100%;
-                order: -1;
-                min-height: auto;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 40px 0 30px;
-            }
-            
-            .section-title {
-                font-size: 1.3rem;
-            }
-            
-            .tool-container, .feature-card {
-                padding: 25px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                padding: 12px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Generate SEO-friendly YouTube video tags with ease using this responsive tool. Developed by Vivek Balasaheb Kedari." />
+  <meta name="author" content="Vivek Balasaheb Kedari" />
+  <title>YouTube Tags Generator Tool</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .tag { background-color: #c7d2fe; padding: 0.5rem 1rem; border-radius: 9999px; margin: 0.25rem; display: inline-block; font-weight: 500; color: #1e3a8a; }
+    .gradient-bg {
+      background: linear-gradient(to right, #3b82f6, #9333ea);
+    }
+    .input-box {
+      background: #fdf4ff;
+      border: 2px solid #c084fc;
+    }
+    .btn-custom {
+      background: linear-gradient(to right, #6366f1, #ec4899);
+    }
+    .btn-custom:hover {
+      background: linear-gradient(to right, #4338ca, #db2777);
+    }
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4653586285489354~7933978688" crossorigin="anonymous"></script>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <i class="fab fa-youtube logo-icon"></i>
-                    <span>YouTube Tools</span>
-                </a>
-            </nav>
-        </div>
-    </header>
-    
-    <section class="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">Boost Your <span class="highlight">Video SEO</span></h1>
-            <p class="hero-subtitle">Generate high-performing tags to improve your video's visibility and reach more viewers</p>
-        </div>
-    </section>
-    
-    <div class="container">
-        <div class="tool-wrapper">
-            <div class="tool-container">
-                <h2 class="section-title">Generate Your Tags</h2>
-                <form id="tagsForm">
-                    <div class="form-group">
-                        <label for="videoTitle" class="form-label">Video Title*</label>
-                        <input type="text" id="videoTitle" class="form-control" placeholder="How to Make Perfect Pancakes" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="videoDescription" class="form-label">Video Description</label>
-                        <textarea id="videoDescription" class="form-control" placeholder="Enter your video description to generate more relevant tags..."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="videoCategory" class="form-label">Video Category*</label>
-                        <select id="videoCategory" class="form-control" required>
-                            <option value="">Select a category</option>
-                            <option value="howto">Howto & Style</option>
-                            <option value="food">Food</option>
-                            <option value="education">Education</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="gaming">Gaming</option>
-                            <option value="music">Music</option>
-                            <option value="tech">Science & Technology</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="customKeywords" class="form-label">Custom Keywords (Optional)</label>
-                        <input type="text" id="customKeywords" class="form-control" placeholder="breakfast, recipe, cooking tutorial">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-block">
-                        <i class="fas fa-magic"></i> Generate Tags
-                    </button>
-                </form>
-                
-                <div class="result-container" id="resultContainer">
-                    <h2 class="section-title">Your Generated Tags</h2>
-                    <div class="result-box">
-                        <textarea id="generatedTags" class="form-control" readonly></textarea>
-                        <div class="result-actions">
-                            <span class="tag-count" id="tagCount">0 tags generated (500 character limit)</span>
-                            <button class="copy-btn" id="copyBtn">
-                                <i class="far fa-copy"></i> Copy Tags
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="tips-card">
-                        <h3 class="tips-title"><i class="fas fa-lightbulb"></i> Pro Tips for Using Tags</h3>
-                        <ul class="tips-list">
-                            <li>Use all 500 characters to maximize discoverability</li>
-                            <li>Place your most important tags first</li>
-                            <li>Mix broad and specific keywords</li>
-                            <li>Include your brand name as a tag</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- AdMob Ad Container -->
-            <div class="ad-container">
-                <div class="ad-label">Advertisement</div>
-                <!-- Replace with your AdMob code -->
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-                     crossorigin="anonymous"></script>
-                <!-- Your Ad Unit -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                     data-ad-slot="YYYYYYYYYY"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </div>
-        
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-tags"></i>
-                </div>
-                <h3 class="feature-title">Smart Tag Generation</h3>
-                <p>Our AI analyzes your content and current trends to suggest the most effective tags.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3 class="feature-title">SEO Optimized</h3>
-                <p>Tags are optimized for YouTube's algorithm to help your videos rank higher.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3 class="feature-title">Lightning Fast</h3>
-                <p>Generate professional-quality tags in seconds, saving you hours of research.</p>
-            </div>
-        </div>
-        
-        <!-- Second AdMob Ad -->
-        <div class="ad-container" style="width: 100%; margin: 40px 0; min-height: 90px;">
-            <div class="ad-label">Advertisement</div>
-            <!-- Replace with your AdMob code -->
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-                 crossorigin="anonymous"></script>
-            <!-- Your Ad Unit -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="ZZZZZZZZZZ"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-    </div>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>YouTube Tools</h3>
-                    <p>Providing powerful tools to help content creators grow their channels.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tags Generator</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Thumbnail Maker</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> YouTube SEO Guide</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Content Strategy</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Connect</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; <span id="currentYear"></span> YouTube Tools. Created by <span id="authorName"></span></p>
-            </div>
-        </div>
-    </footer>
+<body class="bg-gradient-to-b from-purple-50 to-indigo-100 text-gray-800 min-h-screen">
+  <header class="text-center p-6 gradient-bg text-white shadow-md">
+    <h1 class="text-4xl font-extrabold">🎯 YouTube Tags Generator</h1>
+    <p class="mt-2 text-lg font-medium">By Vivek Balasaheb Kedari</p>
+  </header>
 
-    <script>
-        // Set current year and author name
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        document.getElementById('authorName').textContent = document.querySelector('meta[name="author"]').content;
-        
-        // Tag Generator Functionality
-        const form = document.getElementById('tagsForm');
-        const resultContainer = document.getElementById('resultContainer');
-        const generatedTags = document.getElementById('generatedTags');
-        const copyBtn = document.getElementById('copyBtn');
-        const tagCount = document.getElementById('tagCount');
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const title = document.getElementById('videoTitle').value.trim();
-            const description = document.getElementById('videoDescription').value.trim();
-            const category = document.getElementById('videoCategory').value;
-            const customKeywords = document.getElementById('customKeywords').value.trim();
-            
-            if (!title || !category) {
-                alert('Please fill in all required fields');
-                return;
-            }
-            
-            const tags = generateTags(title, description, category, customKeywords);
-            generatedTags.value = tags;
-            updateTagCount();
-            resultContainer.style.display = 'block';
-            
-            // Scroll to results
-            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-        
-        // Copy Button
-        copyBtn.addEventListener('click', function() {
-            generatedTags.select();
-            document.execCommand('copy');
-            
-            // Visual feedback
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            copyBtn.classList.add('success');
-            
-            setTimeout(function() {
-                copyBtn.innerHTML = originalText;
-                copyBtn.classList.remove('success');
-            }, 2000);
-        });
-        
-        // Update character count
-        function updateTagCount() {
-            const tags = generatedTags.value;
-            const charCount = tags.length;
-            const tagCountNum = tags ? tags.split(',').length : 0;
-            
-            tagCount.textContent = `${tagCountNum} tags generated (${charCount}/500 characters used)`;
-            
-            // Update color based on character count
-            tagCount.className = 'tag-count';
-            if (charCount > 500) {
-                tagCount.classList.add('error');
-            } else if (charCount > 400) {
-                tagCount.classList.add('warning');
-            }
-        }
-        
-        // Tag Generation Algorithm
-        function generateTags(title, description, category, customKeywords) {
-            // 1. Extract keywords from title
-            const titleKeywords = extractKeywords(title);
-            
-            // 2. Extract from description if provided
-            let descKeywords = [];
-            if (description) {
-                descKeywords = extractKeywords(description);
-            }
-            
-            // 3. Process custom keywords if provided
-            let customTags = [];
-            if (customKeywords) {
-                customTags = customKeywords.split(',').map(k => k.trim()).filter(k => k);
-            }
-            
-            // 4. Add category-specific tags
-            const categoryTags = getCategoryTags(category);
-            
-            // 5. Combine all tags and remove duplicates
-            let allTags = [...new Set([
-                ...titleKeywords,
-                ...descKeywords,
-                ...customTags,
-                ...categoryTags
-            ])];
-            
-            // 6. Remove empty tags
-            allTags = allTags.filter(tag => tag && tag.length > 0);
-            
-            // 7. Limit to 500 characters (YouTube's limit for tags)
-            let result = '';
-            let charCount = 0;
-            
-            for (const tag of allTags) {
-                if (charCount + tag.length + (result ? 1 : 0) <= 500) {
-                    if (result) result += ',';
-                    result += tag;
-                    charCount += tag.length + (result ? 1 : 0);
-                } else {
-                    break;
-                }
-            }
-            
-            return result;
-        }
-        
-        // Keyword extraction from text
-        function extractKeywords(text) {
-            // Remove special characters and split into words
-            const words = text.toLowerCase()
-                .replace(/[^\w\s]|_/g, '')
-                .replace(/\s+/g, ' ')
-                .split(' ');
-            
-            // Common words to exclude
-            const stopWords = new Set([
-                'a', 'an', 'the', 'and', 'or', 'but', 'if', 'then', 'else', 'when',
-                'at', 'by', 'for', 'from', 'in', 'into', 'of', 'on', 'to', 'with',
-                'how', 'what', 'when', 'where', 'who', 'why'
-            ]);
-            
-            // Filter out stop words and short words
-            const keywords = words.filter(word => 
-                word.length > 2 && !stopWords.has(word)
-            );
-            
-            // Create variations (single words, 2-word phrases)
-            const variations = [];
-            
-            // Add single words
-            variations.push(...keywords);
-            
-            // Add 2-word phrases
-            for (let i = 0; i < keywords.length - 1; i++) {
-                variations.push(`${keywords[i]} ${keywords[i+1]}`);
-            }
-            
-            return variations;
-        }
-        
-        // Category-specific tags
-        function getCategoryTags(category) {
-            const categoryTags = {
-                'howto': ['how to', 'tutorial', 'diy', 'guide', 'step by step', 'tips', 'tricks', 'learn'],
-                'food': ['recipe', 'cooking', 'food', 'meal', 'delicious', 'easy recipe', 'homemade', 'kitchen'],
-                'education': ['learn', 'education', 'teaching', 'lesson', 'course', 'study', 'knowledge', 'school'],
-                'entertainment': ['funny', 'comedy', 'entertainment', 'show', 'celebrity', 'hollywood', 'tv', 'movie'],
-                'gaming': ['game', 'gaming', 'playthrough', 'walkthrough', 'review', 'esports', 'stream', 'gamer'],
-                'music': ['music', 'song', 'artist', 'band', 'album', 'live', 'performance', 'sing', 'musician'],
-                'tech': ['technology', 'tech', 'gadget', 'review', 'tutorial', 'science', 'computer', 'phone']
-            };
-            
-            return categoryTags[category] || [];
-        }
-    </script>
+  <!-- Top Ad Section -->
+  <div class="my-4 flex justify-center">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-app-pub-4653586285489354"
+         data-ad-slot="9216577677"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <main class="max-w-3xl mx-auto px-4 py-6 bg-white rounded-xl shadow-xl">
+    <div class="mb-6">
+      <label for="keyword" class="block text-lg font-semibold mb-2 text-purple-700">🎬 Enter Your Video Topic or Title:</label>
+      <input type="text" id="keyword" class="w-full p-3 rounded-lg input-box shadow-md" placeholder="e.g., Best SEO Tips for YouTube 2025" />
+      <button onclick="generateTags()" class="mt-4 btn-custom text-white font-bold py-2 px-6 rounded-lg shadow-md">✨ Generate Tags</button>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-pink-600 mb-4">📌 Generated Tags:</h2>
+      <div id="tagOutput" class="flex flex-wrap"></div>
+    </div>
+  </main>
+
+  <!-- Bottom Ad Section -->
+  <div class="my-6 flex justify-center">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-app-pub-4653586285489354"
+         data-ad-slot="3964250998"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <footer class="text-center text-sm text-gray-500 py-4">
+    &copy; 2025 Vivek Balasaheb Kedari. All rights reserved.
+  </footer>
+
+  <script>
+    function generateTags() {
+      const keyword = document.getElementById('keyword').value.trim();
+      const output = document.getElementById('tagOutput');
+      output.innerHTML = '';
+      if (keyword === '') return;
+
+      const words = keyword.toLowerCase().split(/\s+/);
+      const baseTags = [keyword, ...words.map(w => `#${w}`), ...words.map(w => `${w} tutorial`), `${keyword} tips`, `${keyword} 2025`, `${keyword} hindi`, `${keyword} guide`];
+
+      const uniqueTags = [...new Set(baseTags)].slice(0, 25);
+
+      uniqueTags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = tag;
+        output.appendChild(span);
+      });
+    }
+  </script>
 </body>
 </html>
