@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate SEO-optimized YouTube tags easily with this tool by Vivek Kedari.">
+  <meta name="author" content="Vivek Balasaheb Kedari">
+  <title>Tags Generator | YouTube Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4653586285489354~7933978688" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+    }
+    .tag {
+      background-color: #4f46e5;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin: 0.3rem;
+      display: inline-block;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-purple-700 text-white text-center py-4 text-xl font-bold">
+    🚀 YouTube Tags Generator
+  </header>
+
+  <main class="flex-grow flex flex-col items-center p-6">
+    <!-- Top Ad -->
+    <div class="my-4 w-full flex justify-center">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-app-pub-4653586285489354"
+           data-ad-slot="9216577677"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <h2 class="text-2xl text-purple-800 font-semibold mb-2">Enter video title or keywords</h2>
+    <textarea id="input" rows="4" class="w-full max-w-xl p-4 border border-purple-300 rounded-lg shadow mb-4" placeholder="Type your video title..."></textarea>
+    <button onclick="generateTags()" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6">Generate Tags</button>
+
+    <div id="output" class="max-w-2xl w-full flex flex-wrap justify-center"></div>
+
+    <!-- Bottom Ad -->
+    <div class="mt-8">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-app-pub-4653586285489354"
+           data-ad-slot="3964250998"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer class="text-center bg-purple-800 text-white py-4">
+    &copy; 2025 Vivek Balasaheb Kedari | Powered by AdMob
+  </footer>
+
+  <script>
+    // Extract keywords while removing common stop words
+    function extractKeywords(input) {
+      const commonWords = ['the', 'and', 'for', 'to', 'with', 'in', 'a', 'an', 'is', 'of', 'on', 'at', 'by', 'from'];
+      let words = input.split(/\s+/);
+      let keywords = words.filter(word => !commonWords.includes(word.toLowerCase()));
+      return keywords.join(', ');
+    }
+
+    // Function to trim tags if they exceed YouTube's max character length (30 characters)
+    function trimTags(tags) {
+      const maxLength = 30;
+      return tags.map(tag => tag.length > maxLength ? tag.substring(0, maxLength) : tag);
+    }
+
+    // Function to generate SEO optimized tags
+    function generateTags() {
+      const input = document.getElementById('input').value.trim();
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+      if (!input) return;
+
+      // Extract keywords from the input and create tags
+      const keywords = extractKeywords(input);
+      const tags = keywords.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+
+      // Trim tags to fit YouTube's character limits
+      const trimmedTags = trimTags(tags);
+
+      // Remove duplicate tags
+      const uniqueTags = [...new Set(trimmedTags)];
+
+      // Display tags as clickable elements
+      uniqueTags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = '#' + tag;
+        output.appendChild(span);
+      });
+    }
+  </script>
+</body>
+</html>
