@@ -3,35 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free YouTube Tags Generator Tool - Optimize your videos with powerful tags.">
+  <meta name="description" content="Generate SEO-optimized YouTube tags easily with this tool by Vivek Kedari.">
   <meta name="author" content="Vivek Balasaheb Kedari">
-  <title>YouTube Tags Generator</title>
+  <title>Tags Generator | YouTube Tools</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4653586285489354~7933978688" crossorigin="anonymous"></script>
   <style>
     body {
-      background: linear-gradient(to right, #fdfbfb, #ebedee);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
     }
     .tag {
-      background-color: #6366f1;
+      background-color: #4f46e5;
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      margin: 0.25rem;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin: 0.3rem;
       display: inline-block;
       font-size: 0.875rem;
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
-  <header class="bg-indigo-600 text-white p-4 text-center text-2xl font-bold shadow-md">
-    YouTube Tags Generator 🎯
+  <header class="bg-purple-700 text-white text-center py-4 text-xl font-bold">
+    🚀 YouTube Tags Generator
   </header>
 
-  <main class="flex-grow p-6 flex flex-col items-center">
-    <!-- Top Ad Section -->
-    <div class="my-4">
+  <main class="flex-grow flex flex-col items-center p-6">
+    <!-- Top Ad -->
+    <div class="my-4 w-full flex justify-center">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-app-pub-4653586285489354"
@@ -41,14 +40,14 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <h2 class="text-2xl font-semibold text-indigo-700 mb-4">Paste your video title or keywords</h2>
-    <textarea id="input" rows="4" class="w-full max-w-xl p-4 border rounded-lg shadow-sm mb-4" placeholder="Enter video title or keywords..."></textarea>
+    <h2 class="text-2xl text-purple-800 font-semibold mb-2">Enter video title or keywords</h2>
+    <textarea id="input" rows="4" class="w-full max-w-xl p-4 border border-purple-300 rounded-lg shadow mb-4" placeholder="Type your video title..."></textarea>
     <button onclick="generateTags()" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6">Generate Tags</button>
 
     <div id="output" class="max-w-2xl w-full flex flex-wrap justify-center"></div>
 
-    <!-- Bottom Ad Section -->
-    <div class="mt-10">
+    <!-- Bottom Ad -->
+    <div class="mt-8">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-app-pub-4653586285489354"
@@ -59,27 +58,64 @@
     </div>
   </main>
 
-  <footer class="bg-indigo-700 text-white text-center p-4">
-    &copy; 2025 Vivek Balasaheb Kedari. All rights reserved.
+  <footer class="text-center bg-purple-800 text-white py-4">
+    &copy; 2025 Vivek Balasaheb Kedari | Powered by AdMob
   </footer>
 
   <script>
-    function generateTags() {
+    // Define related keywords and synonyms
+    const relatedKeywords = {
+      "car": ["vehicle", "automobile", "sedan", "motor", "transportation", "car"],
+      "tech": ["technology", "gadgets", "electronics", "innovation", "devices"],
+      "movie": ["film", "cinema", "blockbuster", "motion picture", "screenplay"],
+      // Add more keywords as needed
+    };
+
+    // Extract related keywords from the predefined list
+    function getRelatedKeywords(input) {
+      let keywords = input.split(/\s+/);
+      let allRelatedTags = [];
+      keywords.forEach(word => {
+        if (relatedKeywords[word.toLowerCase()]) {
+          allRelatedTags = [...allRelatedTags, ...relatedKeywords[word.toLowerCase()]];
+        }
+      });
+      return allRelatedTags;
+    }
+
+    // Function to fetch Google suggestions
+    async function getGoogleSuggestions(query) {
+      const response = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&q=${query}`);
+      const data = await response.json();
+      return data[1];  // Return list of suggestions
+    }
+
+    // Function to generate SEO optimized tags
+    async function generateTags() {
       const input = document.getElementById('input').value.trim();
       const output = document.getElementById('output');
       output.innerHTML = '';
-      if (input.length === 0) return;
+      if (!input) return;
 
-      const keywords = input.toLowerCase().split(/[ ,]+/).filter(Boolean);
-      const uniqueTags = [...new Set(keywords.map(word => `#${word}`))];
+      // Get related keywords from predefined list
+      let tags = getRelatedKeywords(input);
 
-      uniqueTags.forEach(tag => {
+      // Fetch Google suggestions for more tags
+      const googleTags = await getGoogleSuggestions(input);
+      tags = [...tags, ...googleTags];
+
+      // Remove duplicates and trim tags to fit YouTube's character limits
+      tags = [...new Set(tags)].map(tag => tag.substring(0, 30));
+
+      // Display the tags as clickable elements
+      tags.forEach(tag => {
         const span = document.createElement('span');
         span.className = 'tag';
-        span.textContent = tag;
+        span.textContent = '#' + tag;
         output.appendChild(span);
       });
     }
   </script>
 </body>
 </html>
+
