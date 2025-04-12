@@ -2,87 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Generate SEO-friendly YouTube video tags with ease using this responsive tool. Developed by Vivek Balasaheb Kedari." />
-  <meta name="author" content="Vivek Balasaheb Kedari" />
-  <title>YouTube Tags Generator Tool</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free YouTube Tags Generator Tool - Optimize your videos with powerful tags.">
+  <meta name="author" content="Vivek Balasaheb Kedari">
+  <title>YouTube Tags Generator</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4653586285489354~7933978688" crossorigin="anonymous"></script>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    .tag { background-color: #c7d2fe; padding: 0.5rem 1rem; border-radius: 9999px; margin: 0.25rem; display: inline-block; font-weight: 500; color: #1e3a8a; }
-    .gradient-bg {
-      background: linear-gradient(to right, #3b82f6, #9333ea);
+    body {
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .input-box {
-      background: #fdf4ff;
-      border: 2px solid #c084fc;
-    }
-    .btn-custom {
-      background: linear-gradient(to right, #6366f1, #ec4899);
-    }
-    .btn-custom:hover {
-      background: linear-gradient(to right, #4338ca, #db2777);
+    .tag {
+      background-color: #6366f1;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin: 0.25rem;
+      display: inline-block;
+      font-size: 0.875rem;
     }
   </style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4653586285489354~7933978688" crossorigin="anonymous"></script>
 </head>
-<body class="bg-gradient-to-b from-purple-50 to-indigo-100 text-gray-800 min-h-screen">
-  <header class="text-center p-6 gradient-bg text-white shadow-md">
-    <h1 class="text-4xl font-extrabold">🎯 YouTube Tags Generator</h1>
-    <p class="mt-2 text-lg font-medium">By Vivek Balasaheb Kedari</p>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-indigo-600 text-white p-4 text-center text-2xl font-bold shadow-md">
+    YouTube Tags Generator 🎯
   </header>
 
-  <!-- Top Ad Section -->
-  <div class="my-4 flex justify-center">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-app-pub-4653586285489354"
-         data-ad-slot="9216577677"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <main class="max-w-3xl mx-auto px-4 py-6 bg-white rounded-xl shadow-xl">
-    <div class="mb-6">
-      <label for="keyword" class="block text-lg font-semibold mb-2 text-purple-700">🎬 Enter Your Video Topic or Title:</label>
-      <input type="text" id="keyword" class="w-full p-3 rounded-lg input-box shadow-md" placeholder="e.g., Best SEO Tips for YouTube 2025" />
-      <button onclick="generateTags()" class="mt-4 btn-custom text-white font-bold py-2 px-6 rounded-lg shadow-md">✨ Generate Tags</button>
+  <main class="flex-grow p-6 flex flex-col items-center">
+    <!-- Top Ad Section -->
+    <div class="my-4">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-app-pub-4653586285489354"
+           data-ad-slot="9216577677"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div>
-      <h2 class="text-2xl font-bold text-pink-600 mb-4">📌 Generated Tags:</h2>
-      <div id="tagOutput" class="flex flex-wrap"></div>
+    <h2 class="text-2xl font-semibold text-indigo-700 mb-4">Paste your video title or keywords</h2>
+    <textarea id="input" rows="4" class="w-full max-w-xl p-4 border rounded-lg shadow-sm mb-4" placeholder="Enter video title or keywords..."></textarea>
+    <button onclick="generateTags()" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6">Generate Tags</button>
+
+    <div id="output" class="max-w-2xl w-full flex flex-wrap justify-center"></div>
+
+    <!-- Bottom Ad Section -->
+    <div class="mt-10">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-app-pub-4653586285489354"
+           data-ad-slot="3964250998"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </main>
 
-  <!-- Bottom Ad Section -->
-  <div class="my-6 flex justify-center">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-app-pub-4653586285489354"
-         data-ad-slot="3964250998"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <footer class="text-center text-sm text-gray-500 py-4">
+  <footer class="bg-indigo-700 text-white text-center p-4">
     &copy; 2025 Vivek Balasaheb Kedari. All rights reserved.
   </footer>
 
   <script>
     function generateTags() {
-      const keyword = document.getElementById('keyword').value.trim();
-      const output = document.getElementById('tagOutput');
+      const input = document.getElementById('input').value.trim();
+      const output = document.getElementById('output');
       output.innerHTML = '';
-      if (keyword === '') return;
+      if (input.length === 0) return;
 
-      const words = keyword.toLowerCase().split(/\s+/);
-      const baseTags = [keyword, ...words.map(w => `#${w}`), ...words.map(w => `${w} tutorial`), `${keyword} tips`, `${keyword} 2025`, `${keyword} hindi`, `${keyword} guide`];
-
-      const uniqueTags = [...new Set(baseTags)].slice(0, 25);
+      const keywords = input.toLowerCase().split(/[ ,]+/).filter(Boolean);
+      const uniqueTags = [...new Set(keywords.map(word => `#${word}`))];
 
       uniqueTags.forEach(tag => {
         const span = document.createElement('span');
