@@ -3,43 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Welcome to the ultimate YouTube tools hub by Vivek Balasaheb Kedari. Start generating SEO-optimized tags now!">
+  <meta name="description" content="Generate SEO-optimized YouTube tags easily with this tool by Vivek Kedari.">
   <meta name="author" content="Vivek Balasaheb Kedari">
-  <title>Home | YouTube Tools by Vivek Kedari</title>
+  <title>Tags Generator | YouTube Tools</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4653586285489354~7933978688" crossorigin="anonymous"></script>
   <style>
-    .gradient-header {
-      background: linear-gradient(to right, #8b5cf6, #ec4899);
+    body {
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
     }
-    .btn-link {
-      background: linear-gradient(to right, #6366f1, #ec4899);
+    .tag {
+      background-color: #4f46e5;
       color: white;
-      padding: 0.75rem 2rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin: 0.3rem;
+      display: inline-block;
+      font-size: 0.875rem;
     }
-    .btn-link:hover {
-      background: linear-gradient(to right, #4338ca, #db2777);
+    .copy-button {
+      background-color: #34d399;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-purple-50 to-indigo-100 min-h-screen text-gray-800">
-  <header class="text-center py-12 gradient-header text-white shadow-md">
-    <h1 class="text-4xl font-extrabold mb-2">🎉 Welcome to YouTube Tools</h1>
-    <p class="text-lg font-medium">By Vivek Balasaheb Kedari</p>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-purple-700 text-white text-center py-4 text-xl font-bold">
+    🚀 YouTube Tags Generator
   </header>
 
-  <main class="flex flex-col items-center justify-center py-16 px-4">
-    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-purple-800">🚀 Start Your YouTube Growth Journey</h2>
-    <p class="text-center max-w-2xl mb-8 text-lg text-gray-700">
-      Use our smart tools to generate the best YouTube tags for your videos, boost your visibility and grow your channel faster. Fully SEO-optimized and monetized with AdSense.
-    </p>
-    <a href="tags-generator.html" class="btn-link text-lg">🔗 Go to Tags Generator</a>
+  <main class="flex-grow flex flex-col items-center p-6">
+    <!-- Top Ad -->
+    <div class="my-4 w-full flex justify-center">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-app-pub-4653586285489354"
+           data-ad-slot="9216577677"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <h2 class="text-2xl text-purple-800 font-semibold mb-2">Enter video title or keywords</h2>
+    <textarea id="input" rows="4" class="w-full max-w-xl p-4 border border-purple-300 rounded-lg shadow mb-4" placeholder="Type your video title..."></textarea>
+    <button onclick="generateTags()" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6">Generate Tags</button>
+
+    <div id="output" class="max-w-2xl w-full flex flex-wrap justify-center mb-4"></div>
+    <button id="copyBtn" class="copy-button" style="display:none" onclick="copyTags()">Copy Tags</button>
+
+    <!-- Bottom Ad -->
+    <div class="mt-8">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-app-pub-4653586285489354"
+           data-ad-slot="3964250998"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
   </main>
 
-  <footer class="text-center text-sm text-gray-600 py-6">
-    &copy; 2025 Vivek Balasaheb Kedari. All rights reserved.
+  <footer class="text-center bg-purple-800 text-white py-4">
+    &copy; 2025 Vivek Balasaheb Kedari | Powered by AdMob
   </footer>
+
+  <script>
+    // Hardcoded related tags for testing
+    const relatedTags = {
+      "car": ["vehicle", "automobile", "sedan", "motor", "transportation"],
+      "tech": ["technology", "gadgets", "electronics", "innovation", "devices"],
+      "movie": ["film", "cinema", "blockbuster", "motion picture"]
+    };
+
+    function generateTags() {
+      const input = document.getElementById('input').value.trim();
+      const output = document.getElementById('output');
+      const copyBtn = document.getElementById('copyBtn');
+      output.innerHTML = '';
+      copyBtn.style.display = 'none';
+
+      if (!input) return;
+
+      let tags = [];
+
+      // Get related tags from the dictionary
+      for (let key in relatedTags) {
+        if (input.toLowerCase().includes(key)) {
+          tags = [...tags, ...relatedTags[key]];
+        }
+      }
+
+      // Add input itself as a tag
+      tags.push(input);
+
+      // Remove duplicates and trim to 30 characters max
+      tags = [...new Set(tags)].map(tag => tag.substring(0, 30));
+
+      // Display the tags as clickable elements
+      tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = '#' + tag;
+        output.appendChild(span);
+      });
+
+      // Show the copy button
+      copyBtn.style.display = 'inline-block';
+      copyBtn.dataset.tags = tags.join(", ");
+    }
+
+    function copyTags() {
+      const copyText = document.getElementById("copyBtn").dataset.tags;
+      navigator.clipboard.writeText(copyText).then(function() {
+        alert("Tags copied to clipboard!");
+      }, function(err) {
+        alert("Error copying tags: ", err);
+      });
+    }
+  </script>
 </body>
 </html>
