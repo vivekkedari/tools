@@ -21,6 +21,14 @@
       display: inline-block;
       font-size: 0.875rem;
     }
+    .copy-button {
+      background-color: #34d399;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -44,7 +52,8 @@
     <textarea id="input" rows="4" class="w-full max-w-xl p-4 border border-purple-300 rounded-lg shadow mb-4" placeholder="Type your video title..."></textarea>
     <button onclick="generateTags()" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6">Generate Tags</button>
 
-    <div id="output" class="max-w-2xl w-full flex flex-wrap justify-center"></div>
+    <div id="output" class="max-w-2xl w-full flex flex-wrap justify-center mb-4"></div>
+    <button id="copyBtn" class="copy-button" style="display:none" onclick="copyTags()">Copy Tags</button>
 
     <!-- Bottom Ad -->
     <div class="mt-8">
@@ -65,9 +74,9 @@
   <script>
     // Define related keywords and synonyms
     const relatedKeywords = {
-      "car": ["vehicle", "automobile", "sedan", "motor", "transportation", "car"],
+      "car": ["vehicle", "automobile", "sedan", "motor", "transportation"],
       "tech": ["technology", "gadgets", "electronics", "innovation", "devices"],
-      "movie": ["film", "cinema", "blockbuster", "motion picture", "screenplay"],
+      "movie": ["film", "cinema", "blockbuster", "motion picture"],
       // Add more keywords as needed
     };
 
@@ -94,7 +103,10 @@
     async function generateTags() {
       const input = document.getElementById('input').value.trim();
       const output = document.getElementById('output');
+      const copyBtn = document.getElementById('copyBtn');
       output.innerHTML = '';
+      copyBtn.style.display = 'none';
+
       if (!input) return;
 
       // Get related keywords from predefined list
@@ -113,6 +125,20 @@
         span.className = 'tag';
         span.textContent = '#' + tag;
         output.appendChild(span);
+      });
+
+      // Show the copy button
+      copyBtn.style.display = 'inline-block';
+      copyBtn.dataset.tags = tags.join(", ");
+    }
+
+    // Copy tags to clipboard
+    function copyTags() {
+      const copyText = document.getElementById("copyBtn").dataset.tags;
+      navigator.clipboard.writeText(copyText).then(function() {
+        alert("Tags copied to clipboard!");
+      }, function(err) {
+        alert("Error copying tags: ", err);
       });
     }
   </script>
