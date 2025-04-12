@@ -1,173 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generate YouTube tags easily and optimize your videos with the best SEO practices. A tool created by Vivek Balasaheb Kedari.">
-  <meta name="author" content="Vivek Balasaheb Kedari">
-  <meta name="keywords" content="YouTube, tags generator, SEO, video optimization, YouTube tags, content creator">
-  <meta name="robots" content="index, follow">
-  <title>YouTube Tags Generator Tool | Created by Vivek Balasaheb Kedari</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4653586285489354~7933978688" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="Vivek Balasaheb Kedari" />
+  <meta name="description" content="Generate high-quality YouTube tags with our free SEO tool!" />
+  <meta name="keywords" content="YouTube tags generator, SEO tool, video tags, Vivek Kedari, YouTube SEO"/>
+  <title>YouTube Tags Generator</title>
   <style>
     body {
-      background: linear-gradient(to right, #d6a4a4, #d9d9d9);
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
     }
-    .tag {
-      background-color: #4c51bf;
-      color: white;
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      margin: 0.3rem;
-      display: inline-block;
-      font-size: 0.875rem;
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .copy-button {
-      background-color: #10b981;
+    h1 {
+      text-align: center;
+      color: #3f51b5;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px 24px;
+      background: #3f51b5;
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
-      margin-top: 1rem;
     }
-    .copy-button:hover {
-      background-color: #065f46;
+    button:hover {
+      background: #303f9f;
     }
-    .header {
-      background: #5A67D8;
-      color: white;
-      padding: 1.5rem 0;
-      font-size: 2rem;
-      font-weight: 700;
+    #tags {
+      margin-top: 20px;
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-size: 1rem;
+    }
+    .copy-btn {
+      background: #009688;
+      margin-left: 10px;
+    }
+    .ads {
+      margin: 30px 0;
       text-align: center;
-      border-radius: 10px 10px 0 0;
-    }
-    .footer {
-      background: #2d3748;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-    .output-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .ads-container {
-      margin: 1.5rem 0;
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
     }
   </style>
 </head>
 <body>
-  <!-- Header Section -->
-  <header class="header">
-    <h1>YouTube Tags Generator Tool</h1>
-    <p>By Vivek Balasaheb Kedari</p>
-  </header>
+  <div class="container">
+    <h1>🎬 YouTube Tags Generator</h1>
+    <input type="text" id="title" placeholder="Enter your YouTube video title..." />
+    <button onclick="generateTags()">Generate Tags</button>
+    <button class="copy-btn" onclick="copyTags()">Copy Tags</button>
 
-  <!-- Main Section -->
-  <main class="p-6">
-    <!-- Google AdSense (Top Ad) -->
-    <div class="ads-container">
+    <div id="tags"></div>
+
+    <div class="ads">
+      <!-- Top AdMob Ad -->
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-app-pub-4653586285489354"
-           data-ad-slot="9216577677"
-           data-ad-format="auto"></ins>
+        style="display:block"
+        data-ad-client="ca-app-pub-4653586285489354~7933978688"
+        data-ad-slot="9216577677"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div class="container mx-auto text-center">
-      <h2 class="text-xl text-gray-700 mb-4">Enter Your Video Title or Keywords</h2>
-      <textarea id="inputText" class="w-full max-w-xl p-4 border border-gray-300 rounded-lg shadow-lg" rows="4" placeholder="Type your video title or keywords..."></textarea>
-      <br>
-      <button id="generateBtn" onclick="generateTags()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-semibold shadow-lg mt-4">
-        Generate Tags
-      </button>
-    </div>
-
-    <div id="tagsOutput" class="output-container mt-6"></div>
-
-    <!-- Copy Button -->
-    <button id="copyBtn" class="copy-button" style="display:none;" onclick="copyTags()">Copy Tags</button>
-
-    <!-- Google AdSense (Bottom Ad) -->
-    <div class="ads-container mt-6">
+    <div class="ads">
+      <!-- Bottom AdMob Ad -->
       <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-app-pub-4653586285489354"
-           data-ad-slot="3964250998"
-           data-ad-format="auto"></ins>
+        style="display:block"
+        data-ad-client="ca-app-pub-4653586285489354~7933978688"
+        data-ad-slot="3964250998"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-  </main>
-
-  <!-- Footer Section -->
-  <footer class="footer">
-    <p>&copy; 2025 Vivek Balasaheb Kedari. All rights reserved.</p>
-  </footer>
+  </div>
 
   <script>
-    // Function to generate tags
     function generateTags() {
-      const inputText = document.getElementById('inputText').value.trim();
-      const tagsOutput = document.getElementById('tagsOutput');
-      const copyBtn = document.getElementById('copyBtn');
-      tagsOutput.innerHTML = '';
-      copyBtn.style.display = 'none';
-
-      if (!inputText) return;
-
-      let tags = [];
-      // Example logic for generating tags from the input text
-      const relatedTags = {
-        "tech": ["technology", "gadgets", "electronics", "innovation", "devices"],
-        "movie": ["film", "cinema", "blockbuster", "action", "drama", "comedy"],
-        "fitness": ["workout", "exercise", "health", "gym", "yoga"],
-        "food": ["recipe", "cooking", "meal", "restaurant", "tasty"]
-      };
-
-      // Check for matching keywords and add related tags
-      for (let key in relatedTags) {
-        if (inputText.toLowerCase().includes(key)) {
-          tags = [...tags, ...relatedTags[key]];
-        }
-      }
-
-      // Add the video title or keywords as tags
-      tags.push(inputText);
-      tags = [...new Set(tags)].map(tag => tag.substring(0, 30));
-
-      // Display tags in the output section
-      tags.forEach(tag => {
-        const span = document.createElement('span');
-        span.className = 'tag';
-        span.textContent = '#' + tag;
-        tagsOutput.appendChild(span);
-      });
-
-      // Show the copy button
-      copyBtn.style.display = 'inline-block';
-      copyBtn.dataset.tags = tags.join(", ");
+      const input = document.getElementById('title').value.trim().toLowerCase();
+      const keywords = input.split(" ").filter(w => w.length > 2);
+      const baseTags = ["youtube", "video", "viral", "trending", "shorts", "how to", "tutorial"];
+      const allTags = new Set([...keywords, ...keywords.map(w => w + " video"), ...baseTags]);
+      document.getElementById("tags").textContent = Array.from(allTags).join(", ");
     }
 
-    // Function to copy tags to clipboard
     function copyTags() {
-      const copyText = document.getElementById("copyBtn").dataset.tags;
-      navigator.clipboard.writeText(copyText).then(function() {
+      const text = document.getElementById("tags").textContent;
+      navigator.clipboard.writeText(text).then(() => {
         alert("Tags copied to clipboard!");
-      }, function(err) {
-        alert("Error copying tags: ", err);
       });
     }
   </script>
-
 </body>
 </html>
 
